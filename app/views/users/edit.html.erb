@@ -1,0 +1,166 @@
+<div class="container">
+    <% breadcrumb :edit_user, @user %>
+    <div class="p-3">
+        <h2 class="mb-3">プロフィール編集</h2>
+        <%= form_for @user do |f| %>
+        <form class="edit_user" id="edit_user_2" enctype="multipart/form-data" action="/users/2" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="TKITSQ4+do38M92HRRA2lQpeGBtkcS0s/Tjxa1BMW6DpWCB9ILmaRK7cOlrQiHHLwJtm1Bixu5kRwUIKoeDweQ==">
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="user_picture">プロフィール画像</label>
+                <div class="col-md-9">
+                    <%= f.file_field :picture %>
+                </div>
+                <% if current_user.picture? %>
+                    <%= image_tag current_user.picture.url %>
+                <% end %>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="user_nickname">ニックネーム </label>
+                <div class="col-md-9">
+                    <%= f.text_field :nickname, class: "form-control"%>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="user_name">ユーザー名 </label>
+                <div class="col-md-9">
+                    <%= f.text_field :name, class: "form-control"%>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="user_gender">性別 </label>
+                <div class="col-md-1">
+                    <%= f.select :gender, [["男性", "男性"], ["女性", "女性"], ["秘密", "秘密"]], {}, include_blank: "性別" , class: "form-control"%>
+                </div>
+            </div>
+            <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="user_height">身長 </label>
+                <div class="col-md-3">
+                    <%= f.text_field :height, class: "form-control" %>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="user_weight">体重 </label>
+                <div class="col-md-3">
+                    <%= f.text_field :weight, class: "form-control" %>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="user_comment">自己紹介 </label>
+                <div class="col-md-9">
+                    <%= f.text_field :comment, class: "form-control py-5" %>
+                </div>
+            </div>
+            <div class="form-group row justify-content-end">
+                <div class="col-md-9">
+                    <%= f.submit "更新する", class:"btn btn-primary"%>
+                </div>
+            </div>
+        <% end %>
+<script>
+  $('#post_picture').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('最大のファイルサイズは5MBです。ファイルサイズを小さくしてください。');
+    }
+  });
+</script>
+</form></div>
+
+</div>
+
+<div class="col-md">
+      <form class="edit_balance" id="edit_balance_1" action="/balances/1" accept-charset="UTF-8" method="post" novalidate="novalidate"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="wnXhZ/PkyvMDh+qWY5gzODBTTlwm2TCk2dANZ4NKyaVFDaSnHKSdyKW/S/Z3/VxaRWLwrf4o/swvyO3ZP30WNQ==">
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label for="balance_性別">性別</label>
+          <select class="form-control gender-input" name="balance[gender]" id="balance_gender"><option value="noselect">--未選択--</option>
+<option value="male">男性</option>
+<option selected="selected" value="female">女性</option></select>
+        </div>
+        <div class="form-group col-6">
+          <label for="balance_活動エリア">活動エリア</label>
+          <select class="form-control" name="balance[prefecture_id]" id="balance_prefecture_id"><option value="0">未設定</option>
+<option value="1">北海道</option>
+<option value="2">青森県</option>
+<option value="3">岩手県</option>
+<option value="4">宮城県</option>
+<option value="5">秋田県</option>
+<option value="6">山形県</option>
+<option value="7">福島県</option>
+<option value="8">茨城県</option>
+<option value="9">栃木県</option>
+<option value="10">群馬県</option>
+<option value="11">埼玉県</option>
+<option value="12">千葉県</option>
+<option selected="selected" value="13">東京都</option>
+<option value="14">神奈川県</option>
+<option value="15">新潟県</option>
+<option value="16">富山県</option>
+<option value="17">石川県</option>
+<option value="18">福井県</option>
+<option value="19">山梨県</option>
+<option value="20">長野県</option>
+<option value="21">岐阜県</option>
+<option value="22">静岡県</option>
+<option value="23">愛知県</option>
+<option value="24">三重県</option>
+<option value="25">滋賀県</option>
+<option value="26">京都府</option>
+<option value="27">大阪府</option>
+<option value="28">兵庫県</option>
+<option value="29">奈良県</option>
+<option value="30">和歌山県</option>
+<option value="31">鳥取県</option>
+<option value="32">島根県</option>
+<option value="33">岡山県</option>
+<option value="34">広島県</option>
+<option value="35">山口県</option>
+<option value="36">徳島県</option>
+<option value="37">香川県</option>
+<option value="38">愛媛県</option>
+<option value="39">高知県</option>
+<option value="40">福岡県</option>
+<option value="41">佐賀県</option>
+<option value="42">長崎県</option>
+<option value="43">熊本県</option>
+<option value="44">大分県</option>
+<option value="45">宮崎県</option>
+<option value="46">鹿児島県</option>
+<option value="47">沖縄県</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-4">
+          <label for="balance_身長[cm]">身長[cm]</label>
+          <input placeholder="身長を入力(必須)" class="form-control height-input" type="text" value="176" name="balance[height]" id="balance_height">
+        </div>
+        <div class="form-group col-4">
+          <label for="balance_体重[kg]">体重[kg]</label>
+          <input placeholder="体重を入力(必須)" class="form-control weight-input" type="text" value="67" name="balance[weight]" id="balance_weight">
+        </div>
+        <div class="form-group col-4">
+          <label for="balance_年齢[才]">年齢[才]</label>
+          <input placeholder="年齢を入力(必須)" class="form-control age-input" type="text" value="28" name="balance[age]" id="balance_age">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label for="balance_アクティブ度">アクティブ度</label>
+          <select class="form-control activity-input" name="balance[activity]" id="balance_activity"><option value="noselect">--未選択--</option>
+<option selected="selected" value="low">低い(運動量:小)</option>
+<option value="normal">まあまあ高い(運動量:中)</option>
+<option value="high">高い(運動量:大)</option></select>
+        </div>
+        <div class="form-group col-6">
+          <label for="balance_目的">目的</label>
+          <select class="form-control fitness_type-input" name="balance[fitness_type]" id="balance_fitness_type"><option value="noselect">--未選択--</option>
+<option value="diet">ダイエット(減量)</option>
+<option selected="selected" value="keep">現状維持</option>
+<option value="bulkup">バルクアップ(増量)</option></select>
+        </div>
+      </div>
+      <button name="button" type="submit" class="btn btn-orange text-white">
+      <i style="color:white" class="fa fa-sync-alt"></i>
+      データ更新
+</button>      
+</form>      <div id="balance_error"></div>
+    </div>

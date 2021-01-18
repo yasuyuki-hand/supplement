@@ -1,0 +1,38 @@
+<div class="container">
+
+<h2>ユーザー一覧</h2>
+    <% breadcrumb :users %>
+    <div class="row">
+        <div class="text-center m-auto">
+            <%= search_form_for @q, class: 'form-inline ' do |f| %>
+                <div class="form-group">
+                    <%= f.text_field :name_or_nickname_cont, class: 'form-control input-lg p-4', placeholder: "ユーザー名やニックネームを入力", size: 40 %>
+                </div>
+                <%= f.submit 'ユーザーを検索', class: "btn btn-success btn-lg"%>
+            <% end %>
+        </div>
+    </div>
+<%# ユーザー一覧 %>
+<% if @users.present? %> 
+    <div class="row">
+        <% @users.each do |user| %>
+            <div class="col-md-4 col-xs-12">
+                <div class="users">
+                    <%= link_to user_path(user) do %>
+                        <%#= image_tag user.picture.url %>
+                        <%= user.nickname%>
+                    <% end %>
+                    <%= user.gender %>
+                    <%= user.height %>
+                    <%= user.weight %>
+                    <div class="comment"><%= user.comment %></div>                
+                </div>
+            </div>
+        <% end %>
+    </div>
+<% end %>
+<%= paginate @users %>
+<%= page_entries_info @users %>
+<%#
+= render 'users/users', users: @users %>
+</div>
