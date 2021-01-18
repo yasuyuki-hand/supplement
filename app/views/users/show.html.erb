@@ -1,48 +1,47 @@
 <div class="container">
-
-<p></p><div class="breadcrumbs"><a href="/">Home</a> › <a href="/users">ユーザー一覧</a> › <span class="current">@テスト</span></div><p></p>
-<!-- ユーザープロフィール -->
+<% breadcrumb :show_user, @user %>
+    <!-- ユーザープロフィール -->
 <div class="user-profile">
-<div class="icon text-center">
-<img width="100px" src="https://supplebox.s3.amazonaws.com/uploads/user/picture/2/kaisya_man.png">
-</div>
-<div class="name text-center">
-<h1>テスト</h1>
-</div>
-<div class="text-center">
-<a class="btn btn-default" href="/users/2/edit">プロフィールを編集する</a>
-</div>
-<div class="status text-center">
-<ul>
-<li>
-<div class="status-label">ユーザー名</div>
-<div class="status-value">
-@AAAAdfsfdfdnnnnnn
-</div>
-</li>
-<li>
-<div class="status-label">性別</div>
-<div class="status-value">男性</div>
-</li>
-<li>
-<div class="status-label">身長</div>
-<div class="status-value">200cm超</div>
-</li>
-<li>
-<div class="status-label">体重</div>
-<div class="status-value">100kg超</div>
-</li>
-</ul>
-<div class="status comment text-center">
-<ul>
-<li>
-<div class="status-label">自己紹介</div>
-<div class="status-value"></div>
-</li>
-</ul>
-</div>
-</div>
-</div>
+    <div class="icon text-center">
+        <img width="100px" src="https://supplebox.s3.amazonaws.com/uploads/user/picture/2/kaisya_man.png">
+    </div>
+    <div class="name text-center">
+        <h1>テスト</h1>
+    </div>
+    <div class="text-center">
+        <%= link_to "プロフィールを編集する", edit_user_path(@user), class: "btn btn-success"%>
+    </div>
+    <div class="status text-center">
+        <ul>
+        <li>
+        <div class="status-label">ユーザー名</div>
+        <div class="status-value">
+            <%= @user.name %>
+        </div>
+        </li>
+        <li>
+        <div class="status-label">性別</div>
+            <div class="status-value"><%= @user.gender %></div>
+        </li>
+        <li>
+        <div class="status-label">身長</div>
+        <div class="status-value"><%= @user.height %></div>
+        </li>
+        <li>
+        <div class="status-label">体重</div>
+        <div class="status-value"><%= @user.weight %></div>
+        </li>
+        </ul>
+        <div class="status comment text-center">
+        <ul>
+        <li>
+        <div class="status-label">自己紹介</div>
+        <div class="status-value"><%= @user.comment %></div>
+        </li>
+        </ul>
+        </div>
+        </div>
+        </div>
 
 <!-- /ユーザープロフィール -->
 <div class="col-md-12">
