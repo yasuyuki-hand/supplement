@@ -16,6 +16,20 @@ crumb :edit_user do |user|
   parent :show_user, user
 end
 
+crumb :brands do
+  link 'ブランド一覧', brands_path
+end
+
+crumb :new_brand do |brand|
+  link 'ブランド登録', new_brand_path(brand)
+end
+
+crumb :show_brand do |brand|
+  link "#{brand.name}", brand_path(brand)
+  parent :brands
+end
+
+
 
 # crumb :projects do
 #   link "Projects", projects_path

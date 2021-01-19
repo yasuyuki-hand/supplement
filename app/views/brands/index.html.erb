@@ -1,59 +1,34 @@
 <div class="container">
-    <p></p>
-    <div class="breadcrumbs">
-        <a href="/">Home</a> › <span class="current">ブランド一覧</span>
-    </div>
-    <p></p>
+    <% breadcrumb :brands, @brand %>
     <h2>ブランド一覧</h2>
     <!-- ブランド検索 -->
     <div class="search">
         <div class="row">
-            <div class="text-center">
+            <div class="text-center m-auto">
                 <%= search_form_for @q, class: 'form-line' do |f| %>
                     <div class="form-group">
                         <%= f.text_field :name, class: 'form-control input-lg', placeholder: "例）SAVAS や ザバス", size: 40 %>
                     </div>
-                <%= f.submit 'ブランドを検索', class: "btn btn-success btn-lg"%>
+                    <%= f.submit 'ブランドを検索', class: "btn btn-success btn-lg"%>
+                <% end %>
             </div>   
         </div>
     </div>
-<!-- ブランド一覧 -->
+    <!-- ブランド一覧 -->
         <div class="row">
             <% @brands.each do |brand| %>
             <div class="col-md-4 col-xs-12">
                 <div class="users">
                     <%= link_to brand_path(brand) do %>
-                        <%= brand.picture %>
+                        <%= image_tag brand.picture.url %>
                         <p><%= brand.name%></p>
-                    <%= end %>
+                    <% end %>
                 </div>
             </div> 
             <% end %>  
         </div>
     </div>
-</div>
-<!-- ページネーション -->
-<ul class="pagination">
-
-
-<li class="active">
-<a data-remote="false">1</a>
-</li>
-
-<li>
-<a rel="next" href="/brands?page=2">2</a>
-</li>
-
-<li>
-<a rel="next" href="/brands?page=2">次 ›</a>
-</li>
-
-<li>
-<a href="/brands?page=2">最後 »</a>
-</li>
-
-</ul>
-
-全14件中 1&nbsp;-&nbsp;9件のブランドが表示されています
-
+    <!-- ページネーション -->
+    <%= paginate @brands %>
+    <%= page_entries_info @brands %>
 </div>

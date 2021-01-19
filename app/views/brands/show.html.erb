@@ -1,0 +1,36 @@
+<div class="container">
+    <% breadcrumb :show_brand, @brand %>
+    <!-- 商品情報 -->
+    <h2>ブランド詳細情報</h2>
+    <div class="row p-3">
+        <div class="col-md-3">
+            <div class="brand_detail">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <%= image_tag @brand.picture.url %>
+                    </div>
+                    <div class="panel-body"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <h4><%= @brand.name %></h4>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><%= @brand.content %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <%= link_to 'ブランドを編集する', edit_brand_path(@brand), class: 'btn btn-info'%>
+            <%= link_to 'ブランドを削除する', brand_path(@brand), method: :delete, data: { confirm: "ブランドを削除します。よろしいでしょうか？" }, class: 'btn btn-danger' %>
+        </div>
+    </div>
+    <!-- アイテム一覧 -->
+    <h2>
+    zavas
+    のアイテム一覧
+    </h2>
+</div>
