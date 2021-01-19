@@ -13,7 +13,7 @@
     email: 'test@supplement.jp',
     password: 'testsupple',
     password_confirmation: 'testsupple',
-    nickname: 'テスト',
+    nickname: 'テスト'
   )
   
   29.times do |_n|
@@ -29,15 +29,15 @@
     )
   end
   
-  アイテム登録
-  30.times do |n|
-    Product.create!(
-      title: "NO.#{n}プロテイン",
-      url: "sample#{n}@supplebox.jp",
-      image_url: "sample_image#{n}@supplebox.jp",
-      asin: "code#{n}",
-    )
-  end
+#   アイテム登録
+#   30.times do |n|
+#     Product.create!(
+#       title: "NO.#{n}プロテイン",
+#       url: "sample#{n}@supplebox.jp",
+#       image_url: "sample_image#{n}@supplebox.jp",
+#       asin: "code#{n}",
+#     )
+#   end
   
 #   users = User.order(:created_at).take(6)
 #   (1..30).each do |n|

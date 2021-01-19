@@ -1,25 +1,32 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="<%= root_path %>"><span>yasusupp</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-        <% if user_signed_in? %>
-          <li><%= link_to ' Home',user_path(current_user),class: 'fas fa-home nav-link text-light' %></li>
-          <li><%= link_to ' Users',users_path,class: 'fas fa-users nav-link text-light' %></li>
-          
-          <li><%= link_to ' logout', destroy_user_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
-        <% else %>
-          <li><%= link_to ' Home',root_path,class: 'fas fa-home nav-link text-light' %></li>
-          
-          <li><%= link_to ' sign up', new_user_registration_path,class: 'fas fa-user-plus nav-link text-light' %></li>
-          <li><%= link_to ' login', new_user_session_path ,class: 'fas fa-sign-in-alt nav-link text-light'%></li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="<%= root_path %>"><span>yasusupp</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                <% if user_signed_in? %>
+                    <li><%= link_to 'Home',root_path,class: 'fas fa-home nav-link text-light' %></li>
+                    <li><%= link_to 'Brand',brands_path,class: 'fas fa-home nav-link text-light' %></li>
+                    <li><%= link_to 'Users',users_path,class: 'fas fa-users nav-link text-light' %></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><%= current_user.name %></a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a><%= link_to "Profile", current_user, class: "dropdown-item text-dark"  %></a>
+                            <a class="dropdown-item" href="<%= edit_user_path(current_user) %>">Setting</a>
+                            <a class="dropdown-item" rel="nofollow" data-method="delete" href="<%= destroy_user_session_path %>">Logout</a>
+                        </div>
+                    </li>
+                <% else %>
+                    <li><%= link_to 'Home',root_path,class: 'fas fa-home nav-link text-light' %></li>
+                    <li><%= link_to ' Sign up', new_user_registration_path,class: 'fas fa-user-plus nav-link text-light' %></li>
+                    <li><%= link_to ' Login', new_user_session_path ,class: 'fas fa-sign-in-alt nav-link text-light'%></li>
+                    <li><%= link_to ' Contact', root_path ,class: 'fas fa-sign-in-alt nav-link text-light'%></li>
+                <% end %>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </header>
